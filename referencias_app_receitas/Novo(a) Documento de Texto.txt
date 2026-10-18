@@ -1,0 +1,676 @@
+# PROJETO: APP PESSOAL DE RECEITAS
+## Especificação visual e funcional de todas as telas — Android XML + Kotlin
+
+Você é um desenvolvedor Android experiente, responsável por implementar um aplicativo pessoal de receitas culinárias.
+
+O objetivo é criar um aplicativo bonito, organizado, personalizável e fácil de usar, com uma identidade visual gastronômica escura e uma experiência de leitura de receitas inspirada em documentos contínuos.
+
+**Tecnologias obrigatórias:** Kotlin para lógica, XML para layouts, Android Views e componentes nativos compatíveis com a arquitetura do projeto.
+
+Não use Jetpack Compose para criar as telas novas. Não transforme as telas de referência em imagens de fundo. Todas as interfaces devem ser construídas com componentes reais, texto real, imagens individuais e controles funcionais.
+
+Antes de modificar qualquer arquivo, inspecione o projeto existente, identifique sua estrutura e apresente um plano de implementação. Preserve funcionalidades existentes e não apague dados.
+
+---
+
+# 1. IDENTIDADE VISUAL GLOBAL
+
+## 1.1. Tema padrão
+
+Crie uma identidade visual gastronômica com:
+
+- Fundo principal: preto suave ou grafite muito escuro.
+- Superfícies secundárias: cinza-carvão.
+- Texto principal: branco suave.
+- Texto secundário: cinza-claro.
+- Cor de destaque: vermelho queimado ou laranja avermelhado.
+- Fotos de alimentos com aparência natural e boa qualidade.
+- Bordas discretas e cantos arredondados.
+- Ícones simples, consistentes e fáceis de reconhecer.
+
+Valores iniciais sugeridos:
+
+- Fundo: `#141414`
+- Superfície: `#202020`
+- Superfície elevada: `#292929`
+- Texto principal: `#F5F1EB`
+- Texto secundário: `#AAA59D`
+- Destaque: `#E94B35`
+- Divisórias: `#383838`
+
+Essas cores são apenas os padrões iniciais. Devem ser editáveis pelo usuário.
+
+## 1.2. Tipografia
+
+Utilize:
+- Títulos destacados.
+- Texto de receita confortável para leitura prolongada.
+- Rótulos discretos para informações secundárias.
+- Hierarquia visual consistente.
+- Espaçamento suficiente entre linhas e seções.
+
+Na leitura de receitas, priorize o conteúdo, não elementos decorativos.
+
+## 1.3. Layout adaptável
+
+O aplicativo deve funcionar em diferentes tamanhos de celular.
+
+Não fixe as dimensões de todas as telas em pixels absolutos. Utilize dimensões adequadas, recursos de layout, `dp`, `sp`, `ConstraintLayout`, `LinearLayout`, `FrameLayout`, `RecyclerView` ou outros componentes apropriados.
+
+Considere barras de status, navegação do Android, áreas seguras, rolagem e teclado virtual.
+
+---
+
+# 2. NAVEGAÇÃO PRINCIPAL
+
+Criar uma navegação inferior compartilhada entre as principais abas:
+
+1. Início.
+2. Buscar.
+3. Favoritos.
+4. Categorias.
+5. Configurações.
+
+Utilize ícones consistentes e rótulos curtos.
+
+O item ativo deve receber destaque visual usando a cor configurada pelo usuário.
+
+Requisitos:
+- Preservar a navegação entre as telas.
+- Evitar recriar desnecessariamente toda a tela ao alternar de aba.
+- Preservar a posição de rolagem quando for apropriado.
+- Não exibir a navegação inferior em telas imersivas, como o modo de cozinhar, quando ela atrapalhar a experiência.
+- Permitir personalizar os itens da navegação, respeitando um conjunto mínimo de acessos essenciais.
+
+A navegação deve ser consistente em todas as abas principais.
+
+---
+
+# 3. ABA INÍCIO — HOME
+
+A Home é a tela inicial do aplicativo e deve ser a área mais personalizável.
+
+## 3.1. Cabeçalho
+
+Exibir:
+- Ícone para abrir o menu lateral ou navegação principal.
+- Nome do aplicativo.
+- Acesso rápido à busca, se desejado.
+- Acesso às configurações ou personalização.
+
+O cabeçalho deve ser compacto e não ocupar muito espaço vertical.
+
+## 3.2. Receita mais acessada
+
+Criar um bloco de destaque para uma receita.
+
+A aparência padrão deve incluir:
+- Fotografia do prato ocupando boa parte do bloco.
+- Nome da receita.
+- Descrição curta opcional.
+- Indicador discreto como “Mais acessada”.
+- Botão “Ver receita”.
+
+O bloco pode utilizar uma fotografia como fundo com uma sobreposição escura para manter o texto legível, ou uma composição de imagem e texto lado a lado, conforme o tamanho disponível.
+
+A receita inicial deve ser selecionada pela contagem de acessos, com possibilidade de escolha manual.
+
+Se nenhuma receita existir, mostrar um estado vazio convidativo com um botão para cadastrar a primeira receita.
+
+Se a receita não possuir fotografia, utilizar um espaço neutro ou ilustração padrão, sem quebrar o layout.
+
+## 3.3. Área “Minhas receitas”
+
+Abaixo do destaque, exibir as receitas do usuário.
+
+Layout padrão:
+- Grade de duas colunas em celulares adequados.
+- Possibilidade de alternar para lista.
+- Fotografias individuais.
+- Nome da receita.
+- Tempo de preparo, quando disponível.
+- Indicador de favorito.
+- Ação para abrir a receita.
+
+Cada item deve ter uma área de toque confortável.
+
+A grade deve se adaptar automaticamente a diferentes larguras.
+
+## 3.4. Ações da Home
+
+Disponibilizar:
+- Adicionar receita.
+- Ver todas as receitas.
+- Buscar receita.
+- Acessar favoritos.
+- Acessar categorias.
+- Abrir personalização da Home.
+
+## 3.5. Personalização da Home
+
+O usuário deve poder:
+- Alterar a ordem dos blocos.
+- Mostrar ou ocultar blocos.
+- Escolher a receita em destaque.
+- Alternar entre grade e lista.
+- Alterar o número de colunas dentro dos limites disponíveis.
+- Modificar o tamanho dos itens.
+- Alterar cores e estilos.
+- Escolher quais informações aparecem nos itens.
+- Configurar atalhos disponíveis.
+
+A personalização deve ser feita por uma interface visual. O usuário não precisa editar arquivos nem código.
+
+Salvar as preferências de forma persistente.
+
+Sempre oferecer uma maneira de restaurar a configuração padrão.
+
+---
+
+# 4. ABA DE VISUALIZAÇÃO DA RECEITA
+
+Esta tela deve priorizar a leitura e seguir um conceito de documento contínuo.
+
+Utilize as referências fornecidas pelo usuário para compreender a organização visual: títulos, descrição, porções, ingredientes, etapas numeradas e temporizadores.
+
+Não copie a marca ou elementos proprietários de outros aplicativos. Desenvolva uma interface própria baseada em leitura contínua.
+
+## 4.1. Cabeçalho
+
+Exibir:
+- Botão voltar.
+- Acesso aos favoritos.
+- Menu de opções.
+- Compartilhamento, se suportado.
+
+O cabeçalho pode acompanhar a rolagem ou permanecer compacto no topo, conforme a melhor experiência para a plataforma.
+
+## 4.2. Identificação da receita
+
+Ordem padrão:
+1. Título grande.
+2. Descrição opcional.
+3. Fotografia opcional.
+4. Tempo de preparo e outras informações disponíveis.
+5. Rendimento original.
+6. Controle de porções.
+
+A fotografia não é obrigatória. Se não houver foto, o texto deve começar sem deixar um espaço vazio.
+
+## 4.3. Controle de porções
+
+Exibir:
+- Botão de diminuir.
+- Quantidade atual de porções.
+- Botão de aumentar.
+
+Alterar as porções deve atualizar automaticamente os ingredientes numéricos.
+
+Exemplo:
+
+Receita original: 12 porções.
+
+- Farinha: 400 g.
+- Leite: 300 ml.
+- Ovos: 2 unidades.
+
+Ao alterar para 6 porções:
+- Farinha: 200 g.
+- Leite: 150 ml.
+- Ovos: 1 unidade.
+
+Utilize sempre a quantidade original como base:
+
+quantidade exibida = quantidade original × porções desejadas / porções originais
+
+Não use a quantidade já recalculada como base para novos cálculos.
+
+Não modifique permanentemente a receita armazenada quando o usuário apenas altera o rendimento de visualização.
+
+Preserve unidades e observações.
+
+Ingredientes como “sal a gosto” e “quanto baste” não devem receber cálculos artificiais.
+
+## 4.4. Ingredientes
+
+Exibir o título “INGREDIENTES” e uma lista simples.
+
+Cada linha deve apresentar:
+- Quantidade.
+- Unidade.
+- Nome do ingrediente.
+- Observações, se houver.
+
+Não colocar cada ingrediente dentro de um cartão.
+
+Opcionalmente, permitir marcar ingredientes como separados ou disponíveis, sem obrigar o usuário a utilizar essa função.
+
+A aparência padrão deve ser limpa e semelhante a uma lista de documento.
+
+## 4.5. Modo de preparo
+
+Exibir o título “MODO DE PREPARO” ou “PASSOS”.
+
+Cada etapa deve apresentar:
+- Número da etapa.
+- Instrução completa.
+- Temporizador opcional.
+- Controle para marcar a etapa como concluída, se habilitado.
+
+Não criar cartões individuais para todas as etapas.
+
+Use espaçamento vertical, numeração discreta e tipografia legível.
+
+## 4.6. Menu da receita
+
+Disponibilizar:
+- Editar.
+- Favoritar ou desfavoritar.
+- Duplicar.
+- Compartilhar.
+- Excluir, solicitando confirmação.
+
+## 4.7. Botão “Começar a cozinhar”
+
+O botão abre o modo de cozinhar descrito na próxima seção.
+
+---
+
+# 5. MODO DE COZINHAR
+
+Criar uma tela dedicada para acompanhar o preparo sem excesso de informações.
+
+## 5.1. Cabeçalho e progresso
+
+Exibir:
+- Nome da receita, em tamanho reduzido.
+- Etapa atual e quantidade total.
+- Barra de progresso.
+- Acesso aos ingredientes.
+
+## 5.2. Etapa atual
+
+Mostrar:
+- Número da etapa.
+- Texto da instrução em tamanho confortável.
+- Temporizador, quando existir.
+- Botão para concluir a etapa.
+
+A etapa atual deve ocupar a área central da tela.
+
+## 5.3. Navegação
+
+Oferecer:
+- Etapa anterior.
+- Próxima etapa.
+- Marcar como concluída.
+- Visualizar etapas anteriores e seguintes.
+- Sair do modo de cozinhar.
+
+Ao sair, preservar o progresso da sessão.
+
+## 5.4. Temporizadores
+
+Cada etapa pode ter um temporizador independente.
+
+Controles:
+- Iniciar.
+- Pausar.
+- Retomar.
+- Reiniciar.
+
+Calcule o tempo restante usando um horário de término previsto, e não apenas decrementando um contador visual.
+
+Trate corretamente a suspensão do aplicativo e o retorno à tela.
+
+Ao finalizar, exibir um alerta visual e, quando permitido, sonoro.
+
+Não exigir temporizador em etapas que não precisam dele.
+
+---
+
+# 6. ABA ADICIONAR E EDITAR RECEITA
+
+Criar um formulário organizado para cadastrar e editar receitas.
+
+## 6.1. Informações principais
+
+Campos:
+- Título obrigatório.
+- Descrição opcional.
+- Fotografia opcional.
+- Categoria opcional.
+- Número de porções.
+- Tempo de preparo.
+- Tempo de cozimento.
+
+A escolha de foto deve utilizar o seletor de imagens apropriado da plataforma Android.
+
+## 6.2. Ingredientes
+
+Permitir:
+- Adicionar ingrediente.
+- Editar ingrediente.
+- Excluir ingrediente.
+- Reordenar ingredientes.
+
+Cada ingrediente deve aceitar:
+- Quantidade numérica opcional.
+- Unidade opcional.
+- Nome obrigatório.
+- Observação opcional.
+
+Exemplos:
+- 400 g de farinha.
+- 2 ovos.
+- 1/2 xícara de leite.
+- Sal a gosto.
+- Água quanto baste.
+
+Não obrigar todos os ingredientes a terem uma quantidade numérica.
+
+## 6.3. Modo de preparo
+
+Permitir:
+- Adicionar etapas.
+- Editar instruções.
+- Excluir etapas.
+- Reordenar etapas.
+- Associar temporizadores opcionais.
+
+## 6.4. Salvamento
+
+Oferecer botões para salvar e cancelar.
+
+Validar os campos necessários.
+
+Se houver alterações não salvas e o usuário tentar sair, apresentar uma confirmação.
+
+Editar uma receita não deve criar duplicatas.
+
+---
+
+# 7. ABA BUSCAR E EXPLORAR
+
+A tela de busca deve facilitar encontrar receitas rapidamente.
+
+## 7.1. Barra de busca
+
+Exibir um campo de pesquisa com texto indicativo:
+
+“Buscar receitas ou ingredientes...”
+
+Pesquisar por:
+- Nome da receita.
+- Nome dos ingredientes.
+- Categoria, quando aplicável.
+
+A busca deve ignorar diferenças de maiúsculas e minúsculas e, quando viável, acentos.
+
+## 7.2. Categorias rápidas
+
+Exibir categorias configuráveis, por exemplo:
+- Todas.
+- Massas.
+- Carnes.
+- Pães.
+- Sobremesas.
+- Bebidas.
+- Outras categorias criadas pelo usuário.
+
+Não obrigar o usuário a utilizar categorias predefinidas.
+
+## 7.3. Resultados
+
+Permitir:
+- Visualização em grade.
+- Visualização em lista.
+- Ordenação por nome.
+- Ordenação por data.
+- Ordenação por acessos.
+- Filtros disponíveis.
+
+Os resultados devem reutilizar os mesmos componentes de receita da Home.
+
+## 7.4. Estados vazios
+
+Se nenhuma receita corresponder à busca, exibir uma mensagem clara e uma opção para limpar os filtros.
+
+---
+
+# 8. ABA FAVORITOS
+
+Criar uma tela dedicada às receitas favoritas.
+
+Elementos:
+- Cabeçalho “Favoritos”.
+- Quantidade de receitas salvas, se disponível.
+- Lista ou grade de receitas.
+- Fotografias, nomes e informações resumidas.
+- Ação para remover dos favoritos.
+
+Permitir alterar a visualização entre lista e grade.
+
+Se não houver favoritos, exibir uma mensagem explicando como favoritar receitas.
+
+Remover uma receita dos favoritos não deve excluir a receita do aplicativo.
+
+---
+
+# 9. ABA CATEGORIAS
+
+Criar uma área para organizar receitas por categorias.
+
+Permitir:
+- Criar categorias.
+- Renomear categorias.
+- Alterar a cor ou o ícone, se desejado.
+- Excluir categorias com confirmação.
+- Atribuir receitas a uma ou mais categorias, conforme o modelo adotado.
+
+Excluir uma categoria não deve apagar as receitas associadas.
+
+Ao abrir uma categoria, mostrar as receitas correspondentes usando os componentes compartilhados.
+
+Evitar categorias duplicadas acidentalmente.
+
+---
+
+# 10. ABA CONFIGURAÇÕES E PERSONALIZAÇÃO
+
+Esta tela deve centralizar as preferências do aplicativo.
+
+## 10.1. Aparência
+
+Permitir:
+- Tema escuro.
+- Tema claro, se implementado.
+- Seguir o tema do sistema.
+- Cor de destaque.
+- Tamanho do texto.
+- Estilo da grade de receitas.
+- Preferências de imagens.
+
+## 10.2. Layout da Home
+
+Permitir:
+- Reordenar blocos.
+- Mostrar e ocultar blocos.
+- Escolher o formato dos itens.
+- Definir o número de colunas.
+- Alterar a receita em destaque.
+- Restaurar o layout padrão.
+
+## 10.3. Preferências de leitura
+
+Permitir:
+- Ajustar tamanho do texto.
+- Ajustar espaçamento.
+- Mostrar ou ocultar informações secundárias.
+- Definir preferências de exibição de fotos.
+
+A leitura deve continuar confortável em qualquer configuração razoável.
+
+## 10.4. Dados e armazenamento
+
+Disponibilizar, quando suportado:
+- Exportar receitas.
+- Importar receitas.
+- Criar backup.
+- Restaurar backup.
+- Consultar informações da versão.
+
+Operações destrutivas devem exigir confirmação.
+
+Não adicionar sincronização em nuvem ou conta de usuário sem necessidade.
+
+---
+
+# 11. MODELO DE DADOS E ARMAZENAMENTO
+
+Cada receita deve possuir:
+- ID único.
+- Título.
+- Descrição.
+- Referência à foto, quando houver.
+- Número original de porções.
+- Lista ordenada de ingredientes.
+- Lista ordenada de etapas.
+- Categoria ou categorias.
+- Indicador de favorito.
+- Contador de acessos.
+- Datas de criação e edição.
+
+Separar as quantidades originais dos valores calculados para exibição.
+
+Guardar as preferências de aparência e o layout da Home independentemente dos dados das receitas.
+
+Utilizar armazenamento apropriado para a arquitetura existente. Para dados estruturados, considerar Room com SQLite caso o projeto ainda não possua uma solução equivalente.
+
+As preferências simples podem utilizar DataStore ou a solução já adotada pelo projeto.
+
+Não armazenar fotografias grandes como strings Base64 no banco sem uma justificativa técnica. Preferir armazenamento de arquivos e referências persistentes apropriadas.
+
+Garantir que os dados sobrevivam ao encerramento e à reabertura do aplicativo.
+
+---
+
+# 12. PERSONALIZAÇÃO COMO PRINCÍPIO CENTRAL
+
+O aplicativo não deve ficar preso a uma única aparência.
+
+O usuário deve poder personalizar a Home, a aparência dos componentes e as preferências de leitura sem alterar código.
+
+Para implementar isso:
+- Criar um modelo de configuração de layout.
+- Separar a aparência dos componentes da lógica de negócio.
+- Armazenar preferências de forma persistente.
+- Aplicar as configurações ao reconstruir as telas.
+- Oferecer valores padrão.
+- Permitir restaurar as configurações.
+- Evitar opções que tornem a navegação inacessível.
+
+Não criar uma tela de configurações com opções decorativas que não produzem efeito real.
+
+---
+
+# 13. ARQUITETURA ANDROID: XML + KOTLIN
+
+Implementar as interfaces com layouts XML e a lógica com Kotlin.
+
+Utilizar:
+- Activities ou Fragments conforme a arquitetura existente.
+- RecyclerView para listas e grades quando apropriado.
+- ViewModel para estado de tela, se compatível com o projeto.
+- Repository para acesso aos dados.
+- Room para persistência estruturada, se necessário.
+- Recursos XML para cores, dimensões, temas e estilos.
+- Drawables para ícones e formas simples.
+
+Estrutura sugerida, adaptável ao projeto:
+
+app/src/main/
+- AndroidManifest.xml
+- java/.../ui/home/
+- java/.../ui/recipe/
+- java/.../ui/cooking/
+- java/.../ui/editor/
+- java/.../ui/search/
+- java/.../ui/favorites/
+- java/.../ui/categories/
+- java/.../ui/settings/
+- java/.../data/
+- java/.../domain/
+- res/layout/
+- res/drawable/
+- res/color/
+- res/values/
+
+Criar layouts XML próprios para cada tela e componentes compartilhados quando isso reduzir duplicação.
+
+Não criar um único arquivo Kotlin gigantesco contendo toda a aplicação.
+
+Não utilizar imagens estáticas de telas completas como interface. As imagens fornecidas servem como referências de design. Fotografias individuais podem ser utilizadas como conteúdo real das receitas.
+
+---
+
+# 14. ORDEM DE IMPLEMENTAÇÃO
+
+Etapa 1:
+Inspecionar o projeto, identificar a arquitetura, os recursos existentes e apresentar um plano.
+
+Etapa 2:
+Definir os modelos de dados e a persistência das receitas.
+
+Etapa 3:
+Implementar cadastro, edição e visualização contínua da receita.
+
+Etapa 4:
+Implementar o cálculo de porções.
+
+Etapa 5:
+Implementar a Home e sua personalização.
+
+Etapa 6:
+Implementar o modo de cozinhar e os temporizadores.
+
+Etapa 7:
+Implementar busca, favoritos e categorias.
+
+Etapa 8:
+Implementar configurações visuais, exportação e importação, conforme suportado.
+
+Etapa 9:
+Executar testes, corrigir problemas e revisar a experiência em diferentes tamanhos de tela.
+
+Não tente implementar tudo de uma só vez se isso colocar em risco a estabilidade do projeto.
+
+---
+
+# 15. CRITÉRIOS DE ACEITAÇÃO
+
+O projeto será considerado satisfatório quando:
+
+1. A Home apresentar a receita em destaque e as demais receitas.
+2. O usuário conseguir personalizar e restaurar o layout.
+3. A tela de receita utilizar um documento contínuo, sem cartões por ingrediente ou etapa.
+4. As porções atualizarem os ingredientes corretamente.
+5. Ingredientes não numéricos forem preservados.
+6. O usuário conseguir criar, editar e excluir receitas.
+7. O modo de cozinhar permitir avançar, voltar e utilizar temporizadores.
+8. Busca, favoritos e categorias funcionarem.
+9. Preferências e receitas persistirem após reiniciar o aplicativo.
+10. Os layouts funcionarem em diferentes tamanhos de tela.
+11. As telas forem construídas com XML e Kotlin.
+12. Nenhuma função for declarada concluída sem implementação e verificação.
+
+## ENTREGA
+
+Ao concluir cada etapa, informe:
+- Arquivos criados ou alterados.
+- Funcionalidades implementadas.
+- Testes executados e resultados.
+- Problemas pendentes.
+- Próxima etapa recomendada.
+
+Comece inspecionando o projeto e apresentando o plano. Preserve os dados e funcionalidades existentes. Priorize legibilidade, personalização, confiabilidade e consistência visual.

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#141414"
+    android:paddingStart="20dp"
+    android:paddingTop="18dp"
+    android:paddingEnd="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical">
+        <Button
+            android:id="@+id/list_back"
+            android:visibility="gone"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_dark_button"
+            android:text="‹"
+            android:textColor="#F5F1EB"
+            android:textSize="28sp" />
+        <TextView
+            android:id="@+id/list_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#F5F1EB"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/list_category_add"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_accent"
+            android:text="+"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:visibility="gone" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/list_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Encontre algo gostoso para preparar"
+        android:textColor="#AAA59D"
+        android:textSize="14sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+    <LinearLayout
+        android:id="@+id/search_box"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_surface"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="14dp"
+        android:paddingEnd="8dp">
+        <TextView android:layout_width="28dp" android:layout_height="wrap_content" android:text="⌕" android:textColor="#E94B35" android:textSize="25sp" />
+        <EditText
+            android:id="@+id/list_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="Receita, ingrediente..."
+            android:imeOptions="actionSearch"
+            android:inputType="textCapSentences"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:singleLine="true"
+            android:textColor="#F5F1EB"
+            android:textColorHint="#AAA59D"
+            android:textSize="16sp" />
+        <Button
+            android:id="@+id/list_clear_search"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:text="×"
+            android:textColor="#AAA59D"
+            android:textSize="22sp"
+            android:visibility="gone" />
+    </LinearLayout>
+        <Button
+            android:id="@+id/list_filter_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_dark_button"
+            android:text="Filtros"
+            android:textAllCaps="false"
+            android:textColor="#F5F1EB"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/list_filter_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_surface"
+        android:orientation="vertical"
+        android:padding="14dp"
+        android:visibility="gone">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Categoria" android:textColor="#F5F1EB" android:textStyle="bold" android:textSize="15sp" />
+        <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:scrollbars="none">
+            <LinearLayout android:id="@+id/list_filter_categories" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" />
+        </HorizontalScrollView>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginTop="8dp">
+            <Button android:id="@+id/list_filter_favorites" android:layout_width="wrap_content" android:layout_height="42dp" android:background="@drawable/bg_dark_button" android:text="♡ Só favoritas" android:textAllCaps="false" android:textColor="#AAA59D" />
+            <Button android:id="@+id/list_filter_clear" android:layout_width="wrap_content" android:layout_height="42dp" android:layout_marginStart="8dp" android:background="@android:color/transparent" android:text="Limpar" android:textAllCaps="false" android:textColor="#E94B35" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/list_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#AAA59D"
+        android:textSize="14sp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp">
+        <LinearLayout
+            android:id="@+id/list_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+    <include layout="@layout/view_bottom_nav" />
+</LinearLayout>

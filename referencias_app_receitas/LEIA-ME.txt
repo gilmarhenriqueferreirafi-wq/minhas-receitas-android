@@ -1,0 +1,10 @@
+PACOTE DE REFERÊNCIAS — APLICATIVO DE RECEITAS
+
+CONTEÚDO
+- referencias_visuais/home_conceito_visual.png: conceito da Home com tema escuro gastronômico, receita em destaque, grade e navegação.
+- referencia_leitura_receita_01.jpg, _02.jpg, _03.jpg: capturas fornecidas como referência para a tela de leitura contínua.
+- PROMPT_CODEX.md: prompt completo para orientar a implementação.
+
+COMO USAR
+Extraia o ZIP e abra o projeto no Codex. Peça que ele consulte as imagens da pasta referencias_visuais/ como referências de aparência e leia o PROMPT_CODEX.md.
+As imagens são referências, não devem ser usadas como telas estáticas ou fundos. O Codex deve recriar a interface com componentes reais, texto e controles funcionais.

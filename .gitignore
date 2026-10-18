@@ -1,0 +1,10 @@
+.gradle/
+wrapper/dists/
+build/
+*/build/
+local.properties
+.idea/
+*.iml
+captures/
+*.log
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#141414"
+    android:paddingStart="20dp"
+    android:paddingTop="18dp"
+    android:paddingEnd="20dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="60dp" android:gravity="center_vertical">
+        <Button android:id="@+id/settings_back" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_dark_button" android:text="‹" android:textColor="#F5F1EB" android:textSize="28sp" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="Configurações" android:textColor="#F5F1EB" android:textSize="22sp" android:textStyle="bold" />
+        <Space android:layout_width="48dp" android:layout_height="48dp" />
+    </LinearLayout>
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:layout_marginTop="12dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Aparência" android:textColor="#F5F1EB" android:textSize="20sp" android:textStyle="bold" android:paddingBottom="8dp" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_surface" android:padding="16dp" android:text="Tema escuro&#10;O app usa o tema escuro para combinar com a identidade visual." android:textColor="#AAA59D" android:textSize="15sp" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="Dados" android:textColor="#F5F1EB" android:textSize="20sp" android:textStyle="bold" android:paddingBottom="8dp" />
+            <Button android:id="@+id/settings_export" android:layout_width="match_parent" android:layout_height="56dp" android:background="@drawable/bg_surface" android:gravity="start|center_vertical" android:paddingStart="16dp" android:text="Exportar receitas" android:textColor="#F5F1EB" android:textSize="16sp" />
+            <Button android:id="@+id/settings_import" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="10dp" android:background="@drawable/bg_surface" android:gravity="start|center_vertical" android:paddingStart="16dp" android:text="Importar receitas" android:textColor="#F5F1EB" android:textSize="16sp" />
+            <Button android:id="@+id/settings_reset" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="10dp" android:background="@drawable/bg_dark_button" android:gravity="start|center_vertical" android:paddingStart="16dp" android:text="Restaurar dados de exemplo" android:textColor="#F5F1EB" android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/view_bottom_nav" />
+</LinearLayout>
