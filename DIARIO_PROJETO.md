@@ -371,6 +371,12 @@ Quando o Gilmar disser que o limite está acabando, que vai parar/pausar o proje
 - Durante o arrasto, o cartÃ£o acompanha o dedo e retorna suavemente quando o gesto nÃ£o alcanÃ§a o limite.
 - Removido o efeito de troca instantÃ¢nea que fazia o destaque parecer pular.
 
+## PadronizaÃ§Ã£o das animaÃ§Ãµes de abas — 18/10/2026
+
+- Removida a animaÃ§Ã£o global do tema, que fazia todas as Activities se moverem da mesma forma.
+- As abas passaram a usar exclusivamente o fade padrÃ£o do Android.
+- O carrossel, o favorito e a troca de etapa mantÃªm animaÃ§Ãµes prÃ³prias e independentes.
+
 ## Imagens nas abas de Busca e Categorias
 
 - Resultados de busca agora usam foto principal e recorrem ao banner quando a foto principal não existe.
