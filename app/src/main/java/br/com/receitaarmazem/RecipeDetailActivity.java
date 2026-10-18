@@ -89,11 +89,13 @@ public class RecipeDetailActivity extends Activity {
             fillIngredients((LinearLayout) findViewById(R.id.detail_ingredients));
         });
         favorite.setOnClickListener(view -> {
+            MotionUtils.pulse(favorite);
             recipe.favorite = !recipe.favorite;
             favorite.setText(recipe.favorite ? "♥" : "♡");
             saveCurrentRecipe();
         });
         cook.setOnClickListener(view -> {
+            MotionUtils.pulse(cook);
             Intent intent = new Intent(this, CookingActivity.class);
             intent.putExtra(CookingActivity.EXTRA_RECIPE_ID, recipe.id);
             startActivity(intent);
@@ -218,6 +220,7 @@ public class RecipeDetailActivity extends Activity {
 
         Button favorite = button(recipe.favorite ? "★ Remover dos favoritos" : "☆ Adicionar aos favoritos", ACCENT);
         favorite.setOnClickListener(view -> {
+            MotionUtils.pulse(favorite);
             recipe.favorite = !recipe.favorite;
             List<Recipe> recipes = store.load();
             for (int i = 0; i < recipes.size(); i++) {

@@ -330,6 +330,18 @@ Quando o Gilmar disser que o limite está acabando, que vai parar/pausar o proje
 - A entrada da Home agora revela o destaque e a grade de receitas com deslocamento vertical, opacidade e atraso entre os blocos.
 - A animaÃ§Ã£o ficou mais perceptÃ­vel para validaÃ§Ã£o no telefone, mantendo duraÃ§Ã£o curta.
 
+## TransiÃ§Ã£o entre telas — 18/10/2026
+
+- SubstituÃ­da a entrada/saÃ­da apenas por opacidade por uma transiÃ§Ã£o lateral suave.
+- Telas novas entram deslizando da direita e a tela anterior recua levemente para a esquerda.
+- A transiÃ§Ã£o foi aplicada pelo tema global para manter o comportamento consistente nas Activities.
+
+## MicrointeraÃ§Ãµes — 18/10/2026
+
+- Adicionado pulso de escala ao tocar em favorito e iniciar o modo de cozinhar.
+- A etapa atual do modo de cozinhar agora entra com deslocamento lateral e opacidade.
+- Criado `MotionUtils` para centralizar animaÃ§Ãµes curtas e manter o comportamento consistente.
+
 ## Imagens nas abas de Busca e Categorias
 
 - Resultados de busca agora usam foto principal e recorrem ao banner quando a foto principal não existe.

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -123,6 +124,7 @@ public class CookingActivity extends Activity {
         progress.setText("Etapa " + (stepIndex + 1) + " de " + recipe.steps.size());
         progressBar.setProgress((stepIndex + 1) * 100 / recipe.steps.size());
         stepText.setText(step.order + ". " + step.text);
+        MotionUtils.reveal(stepText);
         nextButton.setText(stepIndex >= recipe.steps.size() - 1 ? "Encerrar" : "Próxima →");
         completeButton.setText(completed.contains(stepIndex)
                 ? "✓ Etapa concluída (desmarcar)"

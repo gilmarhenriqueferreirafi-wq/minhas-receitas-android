@@ -11,8 +11,8 @@
     </style>
 
     <style name="AppWindowAnimation">
-        <item name="android:windowEnterAnimation">@anim/app_fade_in</item>
-        <item name="android:windowExitAnimation">@anim/app_fade_out</item>
+        <item name="android:windowEnterAnimation">@anim/app_slide_in_right</item>
+        <item name="android:windowExitAnimation">@anim/app_slide_out_left</item>
     </style>
 
     <style name="AppDialogTheme" parent="android:style/Theme.Material.Dialog.Alert">
