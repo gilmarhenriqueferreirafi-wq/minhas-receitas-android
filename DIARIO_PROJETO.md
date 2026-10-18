@@ -381,6 +381,7 @@ Quando o Gilmar disser que o limite está acabando, que vai parar/pausar o proje
 
 - O pulso do favorito ficou mais longo, maior e com pequeno atraso para nÃ£o ficar escondido pelo dedo durante o toque.
 - A troca de etapa agora anima o bloco completo da etapa, incluindo texto, temporizador e controles.
+- Marcar uma etapa como concluÃ­da deixou de animar a pÃ¡gina inteira; agora apenas o botÃ£o e seu indicador recebem o pulso.
 
 ## Imagens nas abas de Busca e Categorias
 

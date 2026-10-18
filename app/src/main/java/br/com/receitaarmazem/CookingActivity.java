@@ -121,12 +121,16 @@ public class CookingActivity extends Activity {
     }
 
     private void renderStep() {
+        renderStep(true);
+    }
+
+    private void renderStep(boolean animateContent) {
         RecipeStep step = recipe.steps.get(stepIndex);
         if (stepIndex >= recipe.steps.size() - 1) reachedLast = true;
         progress.setText("Etapa " + (stepIndex + 1) + " de " + recipe.steps.size());
         progressBar.setProgress((stepIndex + 1) * 100 / recipe.steps.size());
         stepText.setText(step.order + ". " + step.text);
-        MotionUtils.reveal(stepContent);
+        if (animateContent) MotionUtils.reveal(stepContent);
         nextButton.setText(stepIndex >= recipe.steps.size() - 1 ? "Encerrar" : "Próxima →");
         completeButton.setText(completed.contains(stepIndex)
                 ? "✓ Etapa concluída (desmarcar)"
@@ -155,7 +159,8 @@ public class CookingActivity extends Activity {
     private void toggleComplete() {
         if (!completed.add(stepIndex)) completed.remove(stepIndex);
         if (completed.size() >= recipe.steps.size()) reachedLast = true;
-        renderStep();
+        renderStep(false);
+        MotionUtils.pulse(completeButton);
         saveSession();
     }
 
