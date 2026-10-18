@@ -325,6 +325,11 @@ Quando o Gilmar disser que o limite está acabando, que vai parar/pausar o proje
 - Observar as animaÃ§Ãµes no telefone e ajustar a velocidade caso alguma transiÃ§Ã£o pareÃ§a rÃ¡pida ou lenta.
 - Depois iniciar a segunda etapa de acabamento estÃ©tico: espaÃ§amentos, hierarquia visual, Ã­cones e estados dos botÃµes.
 
+## Ajuste das animaÃ§Ãµes da Home — 18/10/2026
+
+- A entrada da Home agora revela o destaque e a grade de receitas com deslocamento vertical, opacidade e atraso entre os blocos.
+- A animaÃ§Ã£o ficou mais perceptÃ­vel para validaÃ§Ã£o no telefone, mantendo duraÃ§Ã£o curta.
+
 ## Imagens nas abas de Busca e Categorias
 
 - Resultados de busca agora usam foto principal e recorrem ao banner quando a foto principal não existe.

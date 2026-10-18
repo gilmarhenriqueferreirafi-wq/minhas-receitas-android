@@ -103,6 +103,7 @@ public class HomeActivity extends Activity {
         BottomNavigation.bind(this, 0);
 
         populateGrid(recipes);
+        animateHomeEntrance();
     }
 
     private void buildFeaturedOptions(List<Recipe> recipes) {
@@ -158,6 +159,25 @@ public class HomeActivity extends Activity {
                 .translationY(0f)
                 .setDuration(220)
                 .start();
+    }
+
+    private void animateHomeEntrance() {
+        View featured = findViewById(R.id.home_featured);
+        View grid = findViewById(R.id.home_grid);
+        featured.setAlpha(0f);
+        featured.setTranslationY(26f);
+        grid.setAlpha(0f);
+        grid.setTranslationY(34f);
+        featured.postDelayed(() -> featured.animate()
+                .alpha(1f)
+                .translationY(0f)
+                .setDuration(420)
+                .start(), 80);
+        grid.postDelayed(() -> grid.animate()
+                .alpha(1f)
+                .translationY(0f)
+                .setDuration(520)
+                .start(), 180);
     }
 
     private Recipe highestAccess(List<Recipe> recipes, boolean favoriteOnly) {
