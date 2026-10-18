@@ -347,6 +347,11 @@ Quando o Gilmar disser que o limite está acabando, que vai parar/pausar o proje
 - Identificado que `BottomNavigation` usava `overridePendingTransition(0, 0)`, desativando as transiÃ§Ãµes entre abas.
 - SubstituÃ­do pelo par de animaÃ§Ãµes laterais para que a navegaÃ§Ã£o inferior mostre a transiÃ§Ã£o suave.
 
+### Refinamento da transiÃ§Ã£o
+
+- A navegaÃ§Ã£o entre abas passou a usar crossfade, evitando a sensaÃ§Ã£o de que todos os conteÃºdos vÃªm do mesmo ponto.
+- A transiÃ§Ã£o lateral continua disponÃ­vel para telas de detalhe e ediÃ§Ã£o, enquanto a Home troca de aba de forma mais suave.
+
 ## Imagens nas abas de Busca e Categorias
 
 - Resultados de busca agora usam foto principal e recorrem ao banner quando a foto principal não existe.
