@@ -358,6 +358,13 @@ Quando o Gilmar disser que o limite está acabando, que vai parar/pausar o proje
 - Categorias e receitas dentro de uma categoria recebem a mesma entrada escalonada.
 - A busca repete a animaÃ§Ã£o quando os resultados sÃ£o atualizados, deixando claro que o filtro foi aplicado.
 
+## Carrossel da Home com gesto — 18/10/2026
+
+- O destaque da Home agora aceita arrastar para a esquerda ou direita para trocar de opÃ§Ã£o.
+- O indicador numÃ©rico foi substituÃ­do por bolinhas, destacando a opÃ§Ã£o atual.
+- As setas do carrossel foram retiradas da interface para deixar o gesto mais limpo.
+- A troca do destaque usa uma animaÃ§Ã£o horizontal coerente com a direÃ§Ã£o do gesto.
+
 ## Imagens nas abas de Busca e Categorias
 
 - Resultados de busca agora usam foto principal e recorrem ao banner quando a foto principal não existe.

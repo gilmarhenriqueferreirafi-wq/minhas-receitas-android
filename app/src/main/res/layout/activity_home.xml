@@ -121,12 +121,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:textColor="#D4CCC4"
                         android:textSize="13sp" />
                     <Button
                         android:id="@+id/home_featured_previous"
                         android:layout_width="42dp"
                         android:layout_height="38dp"
+                        android:visibility="gone"
                         android:background="@drawable/bg_dark_button"
                         android:text="&lt;"
                         android:textColor="#F5F1EB"
@@ -135,6 +137,7 @@
                         android:id="@+id/home_featured_next"
                         android:layout_width="42dp"
                         android:layout_height="38dp"
+                        android:visibility="gone"
                         android:layout_marginStart="8dp"
                         android:background="@drawable/bg_dark_button"
                         android:text=">"

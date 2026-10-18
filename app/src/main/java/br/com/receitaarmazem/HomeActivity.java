@@ -8,6 +8,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -77,16 +78,34 @@ public class HomeActivity extends Activity {
         renderFeatured();
         View openFeatured = findViewById(R.id.home_featured_open);
         openFeatured.setOnClickListener(view -> openRecipe(featuredOptions.get(featuredIndex).recipe));
-        findViewById(R.id.home_featured).setOnClickListener(view -> openRecipe(featuredOptions.get(featuredIndex).recipe));
+        View featuredCard = findViewById(R.id.home_featured);
+        featuredCard.setOnClickListener(view -> openRecipe(featuredOptions.get(featuredIndex).recipe));
+        featuredCard.setOnTouchListener(new View.OnTouchListener() {
+            private float downX;
+
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    downX = event.getX();
+                    return true;
+                }
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    float distance = event.getX() - downX;
+                    if (Math.abs(distance) > dp(48) && featuredOptions.size() > 1) {
+                        changeFeatured(distance < 0 ? 1 : -1);
+                    } else {
+                        view.performClick();
+                    }
+                    return true;
+                }
+                return true;
+            }
+        });
         findViewById(R.id.home_featured_previous).setOnClickListener(view -> {
-            featuredIndex = (featuredIndex - 1 + featuredOptions.size()) % featuredOptions.size();
-            renderFeatured();
-            animateFeaturedCard();
+            changeFeatured(-1);
         });
         findViewById(R.id.home_featured_next).setOnClickListener(view -> {
-            featuredIndex = (featuredIndex + 1) % featuredOptions.size();
-            renderFeatured();
-            animateFeaturedCard();
+            changeFeatured(1);
         });
 
         findViewById(R.id.home_add).setOnClickListener(view ->
@@ -146,18 +165,29 @@ public class HomeActivity extends Activity {
         String uri = option.recipe.photoUri == null || option.recipe.photoUri.isEmpty()
                 ? option.recipe.bannerUri : option.recipe.photoUri;
         if (uri != null && !uri.isEmpty()) photo.setImageURI(Uri.parse(uri));
-        ((TextView) findViewById(R.id.home_featured_indicator)).setText(
-                (featuredIndex + 1) + " / " + featuredOptions.size());
+        StringBuilder dots = new StringBuilder();
+        for (int i = 0; i < featuredOptions.size(); i++) {
+            dots.append(i == featuredIndex ? "●" : "○");
+            if (i < featuredOptions.size() - 1) dots.append("  ");
+        }
+        ((TextView) findViewById(R.id.home_featured_indicator)).setText(dots.toString());
     }
 
-    private void animateFeaturedCard() {
+    private void changeFeatured(int direction) {
+        if (featuredOptions.isEmpty()) return;
+        featuredIndex = (featuredIndex + direction + featuredOptions.size()) % featuredOptions.size();
+        renderFeatured();
+        animateFeaturedCard(direction);
+    }
+
+    private void animateFeaturedCard(int direction) {
         View card = findViewById(R.id.home_featured);
-        card.setAlpha(0.72f);
-        card.setTranslationY(8f);
+        card.setAlpha(0.35f);
+        card.setTranslationX(direction > 0 ? 28f : -28f);
         card.animate()
                 .alpha(1f)
-                .translationY(0f)
-                .setDuration(220)
+                .translationX(0f)
+                .setDuration(260)
                 .start();
     }
 
