@@ -81,10 +81,12 @@ public class HomeActivity extends Activity {
         findViewById(R.id.home_featured_previous).setOnClickListener(view -> {
             featuredIndex = (featuredIndex - 1 + featuredOptions.size()) % featuredOptions.size();
             renderFeatured();
+            animateFeaturedCard();
         });
         findViewById(R.id.home_featured_next).setOnClickListener(view -> {
             featuredIndex = (featuredIndex + 1) % featuredOptions.size();
             renderFeatured();
+            animateFeaturedCard();
         });
 
         findViewById(R.id.home_add).setOnClickListener(view ->
@@ -145,6 +147,17 @@ public class HomeActivity extends Activity {
         if (uri != null && !uri.isEmpty()) photo.setImageURI(Uri.parse(uri));
         ((TextView) findViewById(R.id.home_featured_indicator)).setText(
                 (featuredIndex + 1) + " / " + featuredOptions.size());
+    }
+
+    private void animateFeaturedCard() {
+        View card = findViewById(R.id.home_featured);
+        card.setAlpha(0.72f);
+        card.setTranslationY(8f);
+        card.animate()
+                .alpha(1f)
+                .translationY(0f)
+                .setDuration(220)
+                .start();
     }
 
     private Recipe highestAccess(List<Recipe> recipes, boolean favoriteOnly) {

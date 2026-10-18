@@ -312,6 +312,19 @@ Quando o Gilmar disser que o limite está acabando, que vai parar/pausar o proje
 - Continuar a reformulaÃ§Ã£o visual da tela de detalhes, do modo de cozinhar e do editor conforme as referÃªncias.
 - Revisar configuraÃ§Ãµes, backup e compatibilidade em diferentes telas.
 
+## Primeiras animaÃ§Ãµes — 18/10/2026
+
+- Adicionadas transiÃ§Ãµes suaves de entrada e saÃ­da para as telas usando animaÃ§Ãµes de opacidade.
+- A Home agora anima a troca dos itens do carrossel com um pequeno deslocamento vertical e retorno de opacidade.
+- Ativadas animaÃ§Ãµes automÃ¡ticas de mudanÃ§a de layout na Home.
+- Mantida uma abordagem discreta para preservar desempenho e legibilidade.
+- A compilaÃ§Ã£o limpa foi validada com sucesso apÃ³s os ajustes.
+
+### PrÃ³ximo passo
+
+- Observar as animaÃ§Ãµes no telefone e ajustar a velocidade caso alguma transiÃ§Ã£o pareÃ§a rÃ¡pida ou lenta.
+- Depois iniciar a segunda etapa de acabamento estÃ©tico: espaÃ§amentos, hierarquia visual, Ã­cones e estados dos botÃµes.
+
 ## Imagens nas abas de Busca e Categorias
 
 - Resultados de busca agora usam foto principal e recorrem ao banner quando a foto principal não existe.
