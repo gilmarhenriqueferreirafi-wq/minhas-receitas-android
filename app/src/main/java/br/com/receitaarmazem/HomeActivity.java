@@ -87,6 +87,13 @@ public class HomeActivity extends Activity {
             public boolean onTouch(View view, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     downX = event.getX();
+                    view.animate().cancel();
+                    return true;
+                }
+                if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    float distance = event.getX() - downX;
+                    view.setTranslationX(distance);
+                    view.setAlpha(1f - Math.min(Math.abs(distance) / (float) dp(260), 0.45f));
                     return true;
                 }
                 if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -94,7 +101,8 @@ public class HomeActivity extends Activity {
                     if (Math.abs(distance) > dp(48) && featuredOptions.size() > 1) {
                         changeFeatured(distance < 0 ? 1 : -1);
                     } else {
-                        view.performClick();
+                        view.animate().translationX(0f).alpha(1f).setDuration(180).start();
+                        if (Math.abs(distance) < dp(8)) view.performClick();
                     }
                     return true;
                 }
@@ -176,18 +184,28 @@ public class HomeActivity extends Activity {
     private void changeFeatured(int direction) {
         if (featuredOptions.isEmpty()) return;
         featuredIndex = (featuredIndex + direction + featuredOptions.size()) % featuredOptions.size();
-        renderFeatured();
         animateFeaturedCard(direction);
     }
 
     private void animateFeaturedCard(int direction) {
         View card = findViewById(R.id.home_featured);
-        card.setAlpha(0.35f);
-        card.setTranslationX(direction > 0 ? 28f : -28f);
+        float width = card.getWidth() > 0 ? card.getWidth() : dp(320);
+        float exitX = direction > 0 ? -width : width;
+        float enterX = direction > 0 ? width : -width;
         card.animate()
-                .alpha(1f)
-                .translationX(0f)
-                .setDuration(260)
+                .translationX(exitX)
+                .alpha(0f)
+                .setDuration(180)
+                .withEndAction(() -> {
+                    renderFeatured();
+                    card.setTranslationX(enterX);
+                    card.setAlpha(0f);
+                    card.animate()
+                            .translationX(0f)
+                            .alpha(1f)
+                            .setDuration(240)
+                            .start();
+                })
                 .start();
     }
 

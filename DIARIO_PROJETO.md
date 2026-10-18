@@ -365,6 +365,12 @@ Quando o Gilmar disser que o limite está acabando, que vai parar/pausar o proje
 - As setas do carrossel foram retiradas da interface para deixar o gesto mais limpo.
 - A troca do destaque usa uma animaÃ§Ã£o horizontal coerente com a direÃ§Ã£o do gesto.
 
+### Ajuste do movimento do carrossel
+
+- Corrigida a troca para o cartÃ£o atual sair primeiro, depois o novo conteÃºdo entrar pelo lado oposto.
+- Durante o arrasto, o cartÃ£o acompanha o dedo e retorna suavemente quando o gesto nÃ£o alcanÃ§a o limite.
+- Removido o efeito de troca instantÃ¢nea que fazia o destaque parecer pular.
+
 ## Imagens nas abas de Busca e Categorias
 
 - Resultados de busca agora usam foto principal e recorrem ao banner quando a foto principal não existe.
