@@ -39,7 +39,7 @@ public final class BottomNavigation {
         // Mantém as abas já abertas no back stack para que a troca não recrie a tela.
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         current.startActivity(intent);
-        current.overridePendingTransition(0, 0);
+        current.overridePendingTransition(R.anim.app_slide_in_right, R.anim.app_slide_out_left);
     }
 
     private static void openList(Activity current, int mode) {
@@ -47,13 +47,13 @@ public final class BottomNavigation {
         intent.putExtra(RecipeListActivity.EXTRA_MODE, mode);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         current.startActivity(intent);
-        current.overridePendingTransition(0, 0);
+        current.overridePendingTransition(R.anim.app_slide_in_right, R.anim.app_slide_out_left);
     }
 
     public static void returnToHome(Activity current) {
         Intent intent = new Intent(current, HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         current.startActivity(intent);
-        current.overridePendingTransition(0, 0);
+        current.overridePendingTransition(R.anim.app_slide_in_right, R.anim.app_slide_out_left);
     }
 }

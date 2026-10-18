@@ -342,6 +342,11 @@ Quando o Gilmar disser que o limite está acabando, que vai parar/pausar o proje
 - A etapa atual do modo de cozinhar agora entra com deslocamento lateral e opacidade.
 - Criado `MotionUtils` para centralizar animaÃ§Ãµes curtas e manter o comportamento consistente.
 
+### CorreÃ§Ã£o da transiÃ§Ã£o
+
+- Identificado que `BottomNavigation` usava `overridePendingTransition(0, 0)`, desativando as transiÃ§Ãµes entre abas.
+- SubstituÃ­do pelo par de animaÃ§Ãµes laterais para que a navegaÃ§Ã£o inferior mostre a transiÃ§Ã£o suave.
+
 ## Imagens nas abas de Busca e Categorias
 
 - Resultados de busca agora usam foto principal e recorrem ao banner quando a foto principal não existe.
