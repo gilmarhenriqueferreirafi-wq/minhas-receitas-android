@@ -109,6 +109,8 @@ public class CategoriesActivity extends Activity {
             LinearLayout.LayoutParams rowParams = params();
             rowParams.setMargins(0, 0, 0, dp(10));
             categoryContainer.addView(row, rowParams);
+            final View animatedRow = row;
+            animatedRow.postDelayed(() -> MotionUtils.reveal(animatedRow), categoryContainer.getChildCount() * 45L);
         }
         if (categories.isEmpty()) {
             TextView empty = new TextView(this);
@@ -186,7 +188,10 @@ public class CategoriesActivity extends Activity {
             if (!recipe.hasCategory(selectedCategory)) continue;
             LinearLayout.LayoutParams cardParams = params();
             cardParams.setMargins(0, 0, 0, dp(10));
-            recipeContainer.addView(categoryRecipeCard(recipe), cardParams);
+            View card = categoryRecipeCard(recipe);
+            recipeContainer.addView(card, cardParams);
+            final View animatedCard = card;
+            animatedCard.postDelayed(() -> MotionUtils.reveal(animatedCard), count * 45L);
             count++;
         }
         ((TextView) findViewById(R.id.category_detail_summary)).setText(

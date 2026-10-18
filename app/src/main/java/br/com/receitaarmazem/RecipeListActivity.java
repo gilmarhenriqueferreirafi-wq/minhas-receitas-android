@@ -257,6 +257,8 @@ public class RecipeListActivity extends Activity {
             LinearLayout.LayoutParams itemParams = params();
             itemParams.setMargins(0, 0, 0, 10);
             listContainer.addView(item, itemParams);
+            final View animatedItem = item;
+            animatedItem.postDelayed(() -> MotionUtils.reveal(animatedItem), count * 45L);
             count++;
         }
         summary.setText(count == 1 ? "1 receita" : count + " receitas");

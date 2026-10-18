@@ -352,6 +352,12 @@ Quando o Gilmar disser que o limite está acabando, que vai parar/pausar o proje
 - A navegaÃ§Ã£o entre abas passou a usar crossfade, evitando a sensaÃ§Ã£o de que todos os conteÃºdos vÃªm do mesmo ponto.
 - A transiÃ§Ã£o lateral continua disponÃ­vel para telas de detalhe e ediÃ§Ã£o, enquanto a Home troca de aba de forma mais suave.
 
+## AnimaÃ§Ãµes em favoritos, categorias e busca — 18/10/2026
+
+- CartÃµes de favoritos e resultados da busca agora entram em sequência com deslocamento lateral e opacidade.
+- Categorias e receitas dentro de uma categoria recebem a mesma entrada escalonada.
+- A busca repete a animaÃ§Ã£o quando os resultados sÃ£o atualizados, deixando claro que o filtro foi aplicado.
+
 ## Imagens nas abas de Busca e Categorias
 
 - Resultados de busca agora usam foto principal e recorrem ao banner quando a foto principal não existe.
