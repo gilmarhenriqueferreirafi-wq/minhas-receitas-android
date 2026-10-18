@@ -377,6 +377,11 @@ Quando o Gilmar disser que o limite está acabando, que vai parar/pausar o proje
 - As abas passaram a usar exclusivamente o fade padrÃ£o do Android.
 - O carrossel, o favorito e a troca de etapa mantÃªm animaÃ§Ãµes prÃ³prias e independentes.
 
+## Ajuste de feedback visual — 18/10/2026
+
+- O pulso do favorito ficou mais longo, maior e com pequeno atraso para nÃ£o ficar escondido pelo dedo durante o toque.
+- A troca de etapa agora anima o bloco completo da etapa, incluindo texto, temporizador e controles.
+
 ## Imagens nas abas de Busca e Categorias
 
 - Resultados de busca agora usam foto principal e recorrem ao banner quando a foto principal não existe.

@@ -8,13 +8,20 @@ final class MotionUtils {
 
     static void pulse(View view) {
         view.animate().cancel();
-        view.setScaleX(0.96f);
-        view.setScaleY(0.96f);
-        view.animate()
-                .scaleX(1f)
-                .scaleY(1f)
-                .setDuration(150)
-                .start();
+        view.postDelayed(() -> {
+            view.setScaleX(0.92f);
+            view.setScaleY(0.92f);
+            view.animate()
+                    .scaleX(1.18f)
+                    .scaleY(1.18f)
+                    .setDuration(210)
+                    .withEndAction(() -> view.animate()
+                            .scaleX(1f)
+                            .scaleY(1f)
+                            .setDuration(260)
+                            .start())
+                    .start();
+        }, 100);
     }
 
     static void reveal(View view) {

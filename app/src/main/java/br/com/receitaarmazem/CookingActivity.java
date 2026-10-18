@@ -33,6 +33,7 @@ public class CookingActivity extends Activity {
     private Button completeButton;
     private Button nextButton;
     private ProgressBar progressBar;
+    private View stepContent;
     private CountDownTimer timer;
 
     @Override
@@ -58,6 +59,7 @@ public class CookingActivity extends Activity {
         completeButton = findViewById(R.id.cooking_complete);
         nextButton = findViewById(R.id.cooking_next);
         progressBar = findViewById(R.id.cooking_progress_bar);
+        stepContent = findViewById(R.id.cooking_step_content);
 
         findViewById(R.id.cooking_back).setOnClickListener(view -> finish());
         findViewById(R.id.cooking_start_timer).setOnClickListener(view -> startTimer(true));
@@ -124,7 +126,7 @@ public class CookingActivity extends Activity {
         progress.setText("Etapa " + (stepIndex + 1) + " de " + recipe.steps.size());
         progressBar.setProgress((stepIndex + 1) * 100 / recipe.steps.size());
         stepText.setText(step.order + ". " + step.text);
-        MotionUtils.reveal(stepText);
+        MotionUtils.reveal(stepContent);
         nextButton.setText(stepIndex >= recipe.steps.size() - 1 ? "Encerrar" : "Próxima →");
         completeButton.setText(completed.contains(stepIndex)
                 ? "✓ Etapa concluída (desmarcar)"
