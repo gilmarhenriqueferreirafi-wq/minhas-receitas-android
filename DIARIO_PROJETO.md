@@ -383,6 +383,12 @@ Quando o Gilmar disser que o limite está acabando, que vai parar/pausar o proje
 - A troca de etapa agora anima o bloco completo da etapa, incluindo texto, temporizador e controles.
 - Marcar uma etapa como concluÃ­da deixou de animar a pÃ¡gina inteira; agora apenas o botÃ£o e seu indicador recebem o pulso.
 
+## CorreÃ§Ã£o do cache do modo de cozinhar — 18/10/2026
+
+- O cache do modo de cozinhar passou a ser salvo com uma chave exclusiva por receita.
+- O cronÃ´metro, etapa atual e etapas concluÃ­das de uma receita nÃ£o podem mais aparecer em outra receita.
+- A limpeza ao finalizar uma receita tambÃ©m remove somente a sessÃ£o daquela receita.
+
 ## Imagens nas abas de Busca e Categorias
 
 - Resultados de busca agora usam foto principal e recorrem ao banner quando a foto principal não existe.

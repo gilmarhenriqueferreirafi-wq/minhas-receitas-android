@@ -197,22 +197,22 @@ public class CookingActivity extends Activity {
     }
 
     private void saveSession() {
-        getPreferences(MODE_PRIVATE).edit()
-                .putInt("step", stepIndex)
-                .putBoolean("reachedLast", reachedLast)
-                .putStringSet("completed", toStrings())
-                .putLong("timerEndAt", timerEndAt)
-                .putLong("timerRemaining", timerEndAt > 0 ? Math.max(0, timerEndAt - System.currentTimeMillis()) : timerRemaining)
+        getSharedPreferences("cooking_sessions", MODE_PRIVATE).edit()
+                .putInt(sessionKey("step"), stepIndex)
+                .putBoolean(sessionKey("reachedLast"), reachedLast)
+                .putStringSet(sessionKey("completed"), toStrings())
+                .putLong(sessionKey("timerEndAt"), timerEndAt)
+                .putLong(sessionKey("timerRemaining"), timerEndAt > 0 ? Math.max(0, timerEndAt - System.currentTimeMillis()) : timerRemaining)
                 .apply();
     }
 
     private void restoreSession() {
-        android.content.SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-        int savedStep = preferences.getInt("step", 0);
-        reachedLast = preferences.getBoolean("reachedLast", false)
+        android.content.SharedPreferences preferences = getSharedPreferences("cooking_sessions", MODE_PRIVATE);
+        int savedStep = preferences.getInt(sessionKey("step"), 0);
+        reachedLast = preferences.getBoolean(sessionKey("reachedLast"), false)
                 || savedStep >= recipe.steps.size() - 1;
         if (reachedLast) {
-            preferences.edit().clear().apply();
+            clearSession(preferences);
             stepIndex = 0;
             timerEndAt = 0;
             timerRemaining = 0;
@@ -221,23 +221,37 @@ public class CookingActivity extends Activity {
             return;
         }
         stepIndex = Math.max(0, Math.min(recipe.steps.size() - 1, savedStep));
-        for (String value : preferences.getStringSet("completed", new HashSet<>())) {
+        for (String value : preferences.getStringSet(sessionKey("completed"), new HashSet<>())) {
             try { completed.add(Integer.parseInt(value)); } catch (NumberFormatException ignored) { }
         }
-        timerEndAt = preferences.getLong("timerEndAt", 0);
-        timerRemaining = preferences.getLong("timerRemaining", 0);
+        timerEndAt = preferences.getLong(sessionKey("timerEndAt"), 0);
+        timerRemaining = preferences.getLong(sessionKey("timerRemaining"), 0);
         if (timerEndAt > 0 && timerEndAt <= System.currentTimeMillis()) {
             timerEndAt = 0;
             timerRemaining = 0;
         }
         if (completed.size() >= recipe.steps.size()) {
-            preferences.edit().clear().apply();
+            clearSession(preferences);
             stepIndex = 0;
             timerEndAt = 0;
             timerRemaining = 0;
             completed.clear();
             reachedLast = false;
         }
+    }
+
+    private String sessionKey(String suffix) {
+        return "recipe_" + recipe.id + "_" + suffix;
+    }
+
+    private void clearSession(android.content.SharedPreferences preferences) {
+        preferences.edit()
+                .remove(sessionKey("step"))
+                .remove(sessionKey("reachedLast"))
+                .remove(sessionKey("completed"))
+                .remove(sessionKey("timerEndAt"))
+                .remove(sessionKey("timerRemaining"))
+                .apply();
     }
 
     private Set<String> toStrings() {
